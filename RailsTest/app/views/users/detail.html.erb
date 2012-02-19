@@ -1,0 +1,45 @@
+<h1>User <%= @user_detail.name %></h1>
+
+<table class="table">
+<tr><td>
+Email
+</td>
+<td>
+<%= @user_detail.email %>
+</td>
+</tr>
+<tr>
+<td>
+Date register
+</td>
+<td>
+<%= @user_detail.created_at %>
+</td>
+</tr>
+</table>
+
+<% if @user_messages.count > 0 %>
+<h2>Messages</h2>
+<% end %>
+
+<% for m in @user_messages %>
+<b>
+<%= m.name %></b> (<i><%= m.created_at.to_s %></i>)
+
+<br/>
+<p>
+<%= m.message %>
+</p>
+<hr/>
+<%end %>
+
+<h2>Add message</h2>
+
+<%= form_tag messages_path do %>
+  <p>
+    <%= label_tag :message %>
+    <%= text_area_tag :message, params[:message] %>
+	<%= hidden_field_tag :user_id, @user_detail.id %>
+  </p>
+  <p class="button"><%= submit_tag "Add message" %></p>
+<% end %>

@@ -1,0 +1,12 @@
+<h1>User List</h1>
+
+<div style="width:400px">
+<table class="table table-striped">
+        <% for us in @all %>
+          <tr><td><%= us.id %></td><td><%= link_to us.name, detail_path + "/#{us.id}" %></td><td> <%= us.email %></td></tr>
+        <% end %>
+		
+
+</table>
+
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsTest</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  
+  
+  <%=stylesheet_link_tag "bootstrap/bootstrap.css" %>
+  
+        
+</head>
+<body>
+
+<div style="padding:15px">
+
+<div style="font-size:14pt;font-weight:700;color:red">
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %><br/>
+<% end %>
+</div>
+
+
+<div style="float:right">
+<h4>Ruby Test Work</h4><br/>
+  <% if current_user %>
+    Logged in as <%= current_user.email %>!<br/>
+    <%= link_to "Log out", log_out_path %> or 
+	<%= link_to "User list", list_path %>
+  <% else %>
+    <%= link_to "Sign up", sign_up_path %> or
+    <%= link_to "log in", log_in_path %>
+  <% end %>
+</div>
+<br/>
+
+<%= yield %>
+
+
+
+
+
+</div>
+</body>
+</html>
